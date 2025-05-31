@@ -1,0 +1,992 @@
+@charset "UTF-8";
+
+/* *変数 -----------------------------*/
+:root {
+    --c_main: #eb51c2;
+    --c_sub: #00b21b;
+    --c_black_main: #111111;
+    --c_black_sub: #333333;
+    --c_gray: #d9d9d9;
+    --c_white: #ffffff;
+}
+
+/* *ベース ------------------------------*/
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: bottom;
+}
+
+body {
+    color: var(--c_black_main);
+    font-family: "Josefin Sans", "Noto Sans", sans-serif;
+    overflow-x: hidden;
+}
+
+/* *共通----------------------------------------- */
+.btn {
+    /* width: 220px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 53px;
+    padding: 20px 26px;
+    background-color: var(--c_main);
+    border-radius: 50px;
+    color: var(--c_white);
+    font-size: 13px;
+    font-weight: bold;
+    font-family: "Josefin Sans", sans-serif;
+    letter-spacing: 0.05em;
+    line-height: 1;
+}
+
+/* タブレット */
+@media screen and (min-width: 600px) {
+    /* .mv {
+        margin-bottom: 160px;
+    } */
+
+    .mv__bg-container {
+        background-position: right -200px top;
+        border-bottom-left-radius: 90px;
+    }
+}
+
+/* PC */
+@media screen and (min-width: 1025px) {
+    .btn {
+        height: 80px;
+        padding: 30px 50px;
+        font-size: 20px;
+    }
+}
+
+.btn--wide {
+    width: 80vw;
+    max-width: 360px;
+}
+
+.btn--mini {
+    height: 36px;
+    padding: 12px 15px;
+    font-size: 12px;
+}
+
+/* PC */
+@media screen and (min-width: 1025px) {
+    .btn--mini {
+        /* height: 80px; */
+        padding: 30px 40px;
+        font-size: 18px;
+    }
+
+    .btn--wide {
+        padding: 0;
+    }
+}
+
+.btn--white {
+    background-color: var(--c_white);
+    color: var(--c_main);
+}
+
+.hp_main-col {
+    color: var(--c_main);
+}
+
+.hp_m0a {
+    margin: 0 auto;
+}
+
+.wave--top {
+    margin-top: 40px;
+    transform: translateY(1px);
+    /* max-width: 1440px; */
+    width: 100vw;
+    height: auto;
+}
+
+.wave--bottom {
+    margin-bottom: 40px;
+    transform: translateY(-1px);
+    width: 100vw;
+    /* max-width: 1440px; */
+    height: auto;
+}
+
+.trainers,
+.studio,
+.price,
+.faq {
+    padding: 40px 30px;
+}
+
+.headingL {
+    font-size: 40px;
+    line-height: 1;
+    margin-bottom: 30px;
+    color: var(--c_white);
+}
+
+.headingL--sub {
+    display: block;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--c_white);
+}
+
+@media screen and (min-width: 1065px) {
+    .trainers,
+    .studio,
+    .price,
+    .faq {
+        padding: 96px 165px;
+    }
+    .headingL {
+        font-size: 64px;
+    }
+
+    .headingL--sub {
+        font-size: 20px;
+        margin-top: 10px;
+    }
+}
+
+/* *レイアウト---------------------------------------- */
+main {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+/* *ヘッダー------------------------------------------ */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 100;
+    background-color: transparent;
+    box-shadow: none;
+    transition-duration: 0.3s;
+}
+
+.header.show-bg {
+    background-color: var(--c_white);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+    transition-duration: 0.3s;
+}
+
+.header__logo img {
+    display: block;
+    width: clamp(96.7px, 25.78vw, 180px);
+    height: auto;
+}
+
+.header button {
+    display: none;
+}
+
+@media screen and (min-width: 1025px) {
+    .header {
+        padding: 0 35px;
+        height: 80px;
+    }
+}
+
+/* *MV------------------------ */
+.mv {
+    position: relative;
+    margin-bottom: 136px;
+}
+
+.mv__bg-container {
+    display: none;
+    width: clamp(266px, 70.933vw, 1060px);
+    height: clamp(410px, 109.333vw, 680px);
+    background-image: url("img/bg_mv.jpg");
+    background-repeat: no-repeat;
+    background-position: right -180px top;
+    background-size: cover;
+    margin-left: auto;
+    border-bottom-left-radius: 50px;
+}
+
+.main-contents {
+    position: absolute;
+    top: clamp(150px, 40vw, 220px);
+    left: clamp(20px, 5.333vw, 173px);
+}
+
+.main-contents__title-title {
+    display: inline-block;
+    font-size: clamp(41px, 10vw, 90px);
+    font-style: italic;
+}
+
+.main-contents__title-title,
+.main-contents__title-title2 {
+    position: relative;
+    animation: bandAnimEnd 1s forwards;
+    color: transparent;
+    background-color: transparent;
+}
+
+.main-contents__title-title::before,
+.main-contents__title-title2::before {
+    content: "";
+    width: 0;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    background-color: var(--c_main);
+    left: 0;
+    animation: bandAnimStart 1s;
+}
+
+/* 帯アニメーション */
+@keyframes bandAnimStart {
+    0% {
+        width: 0;
+        left: 0;
+    }
+
+    50% {
+        width: 100%;
+        left: 0;
+        background-color: var(--c_main);
+    }
+
+    100% {
+        width: 0;
+        left: 100%;
+        background-color: var(--c_white);
+    }
+}
+
+@keyframes bandAnimEnd {
+    50% {
+        color: transparent;
+        background-color: transparent;
+    }
+
+    100% {
+        color: var(--c_black_main);
+        background-color: var(--c_white);
+    }
+}
+
+.main-contents__subtitle {
+    display: block;
+    margin-top: 10px;
+    padding: 0;
+    font-weight: 600;
+    font-size: clamp(12px, 3.2vw, 28px);
+}
+
+/* タブレット */
+@media screen and (min-width: 600px) {
+    .mv__bg-container {
+        background-position: right -200px top;
+        border-bottom-left-radius: 90px;
+    }
+}
+
+/* PC */
+@media screen and (min-width: 1025px) {
+    .mv {
+        margin-bottom: 160px;
+    }
+
+    .mv__bg-container {
+        background-position: right top;
+        border-bottom-left-radius: 90px;
+    }
+
+    .main-contents__title {
+        display: inline-block;
+        font-size: clamp(41px, 10vw, 90px);
+        font-style: italic;
+        margin-bottom: 30px;
+        /* background-color: var(--c_white); */
+    }
+
+    .main-contents__subtitle {
+        display: block;
+        margin-top: 20px;
+        padding: 0;
+        font-weight: 600;
+        font-size: clamp(12px, 3.2vw, 28px);
+        /* background-color: var(--c_white); */
+    }
+}
+
+/* *キャッチコピー---------------------------------------- */
+.catch {
+    padding: 0 20px;
+    position: relative;
+}
+.catch__title {
+    position: absolute;
+    top: -156px;
+    text-align: center;
+    font-size: 56px;
+    font-weight: bold;
+    font-style: italic;
+    line-height: 1;
+}
+
+.catch__subtitle {
+    display: block;
+    color: var(--c_black_main);
+    font-size: 16px;
+    line-height: 1.15;
+    letter-spacing: 0.1em;
+}
+
+.catch_text {
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-family: "Noto Sans";
+}
+
+/* タブレット */
+@media screen and (min-width: 600px) {
+}
+
+/* PC */
+@media screen and (min-width: 1025px) {
+    .catch {
+        padding: 0 20px;
+        position: relative;
+        text-align: center;
+    }
+    .catch__title {
+        position: absolute;
+        width: 100%;
+        top: -180px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 108px;
+    }
+
+    .catch__subtitle {
+        display: block;
+        font-size: 32px;
+    }
+
+    .catch_text {
+        line-height: 2;
+        margin-bottom: 30px;
+    }
+}
+
+/* *section----------------- */
+.section {
+    /* position: relative; */
+}
+
+.section img {
+    width: 100%;
+    height: auto;
+}
+
+/* *PC-------------- */
+/* !幅実装わからん */
+@media screen and (min-width: 1025px) {
+    .training img,
+    .food img {
+        width: 65.97222vw;
+        max-width: 1200px;
+        height: auto;
+        aspect-ratio: 1200/694;
+        object-fit: cover;
+    }
+}
+
+/* *Training---------------------------------- */
+.card {
+    /* position: absolute; */
+    position: relative;
+    margin: -10px 20px 30px;
+    padding: 40px 30px 30px 30px;
+    background-color: var(--c_white);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition-duration: 1.2s;
+    transform: translateY(50%);
+    opacity: 0;
+    z-index: 2;
+}
+
+.card.is-show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.card__heading {
+    font-size: 18px;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.training .card__heading {
+    color: var(--c_main);
+}
+
+.food .card__heading {
+    color: var(--c_sub);
+}
+
+.card__heading-sub {
+    font-size: 22px;
+    line-height: 1.5;
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-family: "Noto Sans";
+}
+
+.card__text {
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+@media screen and (min-width: 1025px) {
+    .training {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        position: relative;
+        margin-bottom: 100px;
+    }
+
+    .food {
+        display: flex;
+        flex-direction: row-reverse;
+        position: relative;
+        margin-bottom: 70px;
+    }
+
+    .card {
+        margin: 0;
+        position: absolute;
+        bottom: 0px;
+        right: 20px;
+        width: 555px;
+        padding: 60px;
+        background-color: var(--c_white);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        z-index: 2;
+        flex: 0 0 555px;
+    }
+
+    .card--reverse {
+        left: 20px;
+    }
+
+    .card__heading {
+        font-size: 24px;
+    }
+
+    .card__heading-sub {
+        font-size: 32px;
+    }
+
+    .card__text {
+        font-size: 15px;
+        line-height: 1.8;
+        letter-spacing: 0.01em;
+    }
+}
+
+/* *トレーナー一覧------------------------- */
+.trainers {
+    background-color: var(--c_main);
+}
+
+.trainers .headingL {
+    color: var(--c_white);
+}
+
+.trainer-cat-list {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.trainer-cat-list__item {
+    /* padding-bottom: 10px; */
+    margin-bottom: 20px;
+    flex: 1;
+    text-align: center;
+    color: var(--c_white);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.15;
+}
+
+.trainer-cat-list__item.tab-active::after {
+    display: block;
+    content: "";
+    margin-top: 10px;
+    width: 100%;
+    border-top: 2px solid var(--c_white);
+    border-radius: 3px;
+}
+
+.trainers-list {
+    display: none;
+}
+
+.trainers-list.list-active {
+    display: block;
+}
+
+.trainers-list__item {
+    margin-bottom: 15px;
+}
+
+.trainers-list__item:last-child {
+    margin-bottom: 0;
+}
+
+.trainers-list__item img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.trainers-list__item p {
+    background-color: var(--c_white);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 20px;
+    font-size: 14px;
+    line-height: 1.6;
+    font-weight: normal;
+}
+
+@media screen and (min-width: 1065px) {
+    .trainer-cat-list__item {
+        /* padding-bottom: 20px; */
+        flex: 1;
+        text-align: center;
+        font-size: 18px;
+    }
+
+    .trainer-cat-list__item.tab-active::after {
+        margin-top: 20px;
+    }
+
+    .trainers-list {
+        display: none;
+    }
+
+    .trainers-list.list-active {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+
+    .trainers-list__item {
+        margin-bottom: 0;
+        display: grid;
+        gap: 0;
+        grid-row: span 2;
+        grid-template-rows: subgrid;
+    }
+
+    .trainers-list__item p {
+        margin-top: -1px;
+        font-size: 14px;
+        line-height: 1.6;
+        font-weight: normal;
+    }
+}
+
+/* *スタジオ--------------------------------------- */
+.studio .headingL {
+    color: var(--c_black_sub);
+}
+
+.studio .headingL--sub {
+    color: var(--c_main);
+}
+
+.swiper-container {
+    position: relative;
+}
+
+.swiper {
+    width: 100%;
+    height: auto;
+}
+
+.swiper-pagination {
+    position: absolute;
+    bottom: -30px !important ;
+}
+
+.swiper-pagination-bullet {
+    opacity: 1;
+    background-color: #eaeaea;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: var(--c_main);
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--c_white);
+    z-index: 2;
+}
+
+.swiper-button-prev {
+    left: -20px;
+}
+
+.swiper-button-next {
+    right: -20px;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    content: "";
+    display: block;
+    width: clamp(6.55px, 1.7466vw, 8.73px);
+    height: clamp(11.18px, 2.98133vw, 15.16px);
+    background-image: url("./img/navigate_before.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.swiper-button-next::after {
+    transform: rotate(180deg);
+}
+
+/* *料金----------------------------- */
+.price {
+    background-color: var(--c_main);
+    padding-left: 20px;
+    padding-right: 0;
+    position: relative;
+}
+
+.price-list {
+    display: flex;
+    gap: 20px;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.price-list::-webkit-scrollbar {
+    display: none;
+}
+
+.recom {
+    display: none;
+}
+
+.price-list__item {
+    padding: 40px 20px 30px;
+    background-color: var(--c_white);
+    flex: 0 0 320px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.price-list__item:last-child {
+    margin-right: 30px;
+}
+
+.course-list__title {
+    margin-bottom: 10px;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--c_main);
+}
+
+.course-list__price span {
+    font-size: 40px;
+    line-height: 1.15;
+}
+
+.course-list__price {
+    font-size: 48px;
+    line-height: 1.15;
+}
+
+.course-list__price2 {
+    font-size: 16px;
+    line-height: 1.15;
+    padding-bottom: 20px;
+}
+
+.price-sub-items dl {
+    padding: 30px 0;
+    border-top: 1px solid var(--c_gray);
+}
+
+.price-sub-items dl:last-child {
+    padding-bottom: 0;
+}
+
+.price-sub-items dt {
+    font-size: 18px;
+    line-height: 1.15;
+    font-weight: 300;
+    margin-bottom: 5px;
+}
+
+.price-sub-items dd {
+    font-size: 16px;
+    line-height: 1.15;
+    font-weight: 600;
+}
+
+.can-scroll {
+    position: absolute;
+    top: 353px;
+    right: 19px;
+    width: 75px;
+    height: 75px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 4px;
+    text-align: center;
+}
+
+.icon-east {
+    font-size: 40px;
+    margin-top: 10px;
+    color: var(--c_white);
+}
+
+.can-scroll__text {
+    display: block;
+    font-size: 12px;
+    color: var(--c_white);
+    line-height: 1.15;
+}
+
+/* *PC-------------- */
+@media screen and (min-width: 1065px) {
+    .price {
+        background-color: var(--c_main);
+        padding-left: 165px;
+        padding-right: 165px;
+        position: relative;
+    }
+
+    .price-list {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    .price-list__item {
+        padding: 40px 20px 30px;
+        background-color: var(--c_white);
+        flex: 1 1 360px;
+    }
+
+    .price-list__item:last-child {
+        margin-right: 0;
+    }
+
+    /* オススメタグ */
+    .recom {
+        position: absolute;
+        display: block;
+        width: 284px;
+        height: 40px;
+        top: 200px;
+        left: 50%;
+        z-index: 2;
+        transform: translateX(-50%);
+        font-size: 20px;
+        font-weight: bold;
+        color: var(--c_main);
+        background-color: var(--c_white);
+        border: 2px solid var(--c_main);
+        border-radius: 70px;
+        text-align: center;
+        line-height: 40px;
+    }
+
+    .can-scroll {
+        display: none;
+    }
+}
+
+/* *FAQ--------------------------------- */
+.faq {
+    margin-bottom: 20px;
+}
+
+.faq .headingL {
+    color: var(--c_black_sub);
+}
+
+.faq .headingL--sub {
+    color: var(--c_main);
+    font-weight: normal;
+}
+
+.faq-list__item {
+    position: relative;
+    border-bottom: 1px solid #ccc;
+    padding: 20px 0;
+    font-size: 15px;
+    line-height: 1.733;
+}
+
+.faq-list__question,
+.faq-list__answer {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.faq-list__1st-letter {
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 1.15;
+}
+
+.faq-list__question .icon-arrow {
+    display: inline-block;
+    color: var(--c_main);
+    position: absolute;
+    right: 6px;
+}
+
+.faq-list__answer {
+    display: none;
+    margin-top: 15px;
+}
+
+@media screen and (min-width: 1065px) {
+    .faq {
+        padding-top: 60px;
+        padding-top: 70px;
+    }
+}
+
+/* *sub visual------------------------------------- */
+.sub-visual {
+    background-color: var(--c_main);
+    text-align: center;
+    font-size: 26px;
+    color: var(--c_white);
+    line-height: 1;
+    padding-bottom: 30px;
+}
+
+.sub-visual__image {
+    width: 100%;
+    height: 48vw;
+    background-image: url("./img/sp_cta.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    margin-bottom: 30px;
+}
+
+.sub-visual .btn {
+    margin: 10px auto 0;
+}
+
+@media screen and (min-width: 1065px) {
+    .sub-visual {
+        background-color: var(--c_main);
+        text-align: center;
+        font-size: 64px;
+        color: var(--c_white);
+        line-height: 1;
+        padding-bottom: 30px;
+    }
+
+    .sub-visual__image {
+        height: 25.694444444444443vw;
+        background-image: url("./img/pc_cta.jpg");
+        margin-bottom: 50px;
+    }
+
+    .sub-visual .btn {
+        margin: 24px auto 0;
+    }
+}
+
+/* *フッター-------------------------------- */
+.footer {
+    height: 118px;
+    background-color: rgb(17, 17, 17);
+    color: var(--c_white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer img {
+    width: clamp(87px, 23.2vw, 180px);
+    height: auto;
+}
+
+@media screen and (min-width: 1065px) {
+    .footer {
+        height: 223px;
+    }
+}
+
+/* *トップに戻るボタン */
+.top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    width: 40px;
+    height: 40px;
+    background-color: var(--c_white);
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 5;
+}
+
+.icon-arrow {
+    display: block;
+    color: var(--c_main);
+    font-size: 24px;
+}
+
+@media screen and (min-width: 1065px) {
+    .top-btn {
+        bottom: 66px;
+        width: 80px;
+        height: 80px;
+    }
+
+    .icon-arrow {
+        font-size: 48px;
+    }
+}
